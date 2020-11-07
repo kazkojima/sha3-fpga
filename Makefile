@@ -40,6 +40,7 @@ clean:
 	-rm -f *.svf
 	-rm -f *_tb.test
 	-rm -f *.vvp
+	-rm -f *.vcd
 	-rm -f *.out
 	-rm -f *~
 
