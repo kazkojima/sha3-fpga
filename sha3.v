@@ -1,6 +1,4 @@
-`include "./freecores-sha3/low_throughput_core/rtl/rconst.v"
-`include "./freecores-sha3/low_throughput_core/rtl/round.v"
-`include "./freecores-sha3/low_throughput_core/rtl/f_permutation.v"
+// SHA3 message digest for limited inputs
 
 module sha3 #(parameter MDLEN = 256, N = 128)
   (input clk,

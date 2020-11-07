@@ -1,3 +1,5 @@
+// testbench for SHA3 message digest for limited inputs
+
 `timescale 1 ns / 1 ps
 
 `include "./sha3.v"

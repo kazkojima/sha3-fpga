@@ -12,6 +12,9 @@ BITSTREAM=top_ecp5.svf
 
 .PRECIOUS: %.json %.asc %.bin %.rpt %.txtcfg
 
+FREECORES_SHA3_DIRS := freecores-sha3/low_throughput_core/rtl
+FREECORES_SHA3_RTL := rconst.v round.v f_permutation.v
+FREECORES_SHA3_SRC := $(foreach f,$(FREECORES_SHA3_RTL),$(FREECORES_SHA3_DIRS)/$(f))
 
 all: $(BITSTREAM) $(TIMINGREPORT)
 
@@ -32,9 +35,9 @@ clean:
 	-rm -f *~
 
 
-top_$(ARCH).json: top.v
+top_$(ARCH).json: top.v $(FREECORES_SHA3_SRC)
 
-tb.vvp: tb.v
+tb.vvp: tb.v $(FREECORES_SHA3_SRC)
 	iverilog -s testbench -o $@ $^
 
 sim: tb.vvp
