@@ -4,15 +4,11 @@ DEVICE=um5g-85k
 PACKAGE=CABGA381
 PINCONSTRAINTS=ecp5-evn.lpf
 BITSTREAM=top_ecp5.svf
-TIMINGREPORT=
 
 #QUIET=-q
 #QUIET=--verbose --debug
 
-TESTBENCHES=$(wildcard *_tb.v)
-TESTS=$(TESTBENCHES:%.v=%.test)
-
-.PHONY: all prog run_tests clean
+.PHONY: all prog sim clean
 
 .PRECIOUS: %.json %.asc %.bin %.rpt %.txtcfg
 
@@ -21,15 +17,6 @@ all: $(BITSTREAM) $(TIMINGREPORT)
 
 prog: $(BITSTREAM)
 	openocd -f ecp5-evn.openocd.conf -c "transport select jtag; init; svf progress quiet $<; exit"
-
-
-run_tests: $(TESTS)
-	make -C verilog-buildingblocks run_tests
-	@for test in $^; do \
-		echo $$test; \
-		./$$test; \
-	done
-
 
 clean:
 	-rm -f *.json
