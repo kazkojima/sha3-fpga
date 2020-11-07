@@ -1,0 +1,13 @@
+*.asc
+*.blif
+*.json
+*.rpt
+*.bin
+*.svf
+*.txtcfg
+*.vvp
+*.vcd
+*.swp
+.*.swp
+*~
+

@@ -1,0 +1,3 @@
+[submodule "freecores-sha3"]
+	path = freecores-sha3
+	url = https://github.com/kazkojima/sha3.git
